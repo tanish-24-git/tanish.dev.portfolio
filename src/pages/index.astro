@@ -1,0 +1,26 @@
+---
+import LoadingScreen from '../components/LoadingScreen.tsx';
+import LandingPage from '../components/LandingPage.tsx';
+import '../styles/global.css'; 
+import '../components/CardNav.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Tanish Jagtap | Portfolio</title>
+    <!-- Use a modern Google font like Inter or Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-outfit bg-black text-zinc-100 min-h-screen m-0 p-0 overflow-x-hidden">
+    <LoadingScreen client:load />
+    
+    <!-- Render the main landing page immediately but it stays hidden under loading screen z-index automatically -->
+    <LandingPage client:load />
+  </body>
+</html>
