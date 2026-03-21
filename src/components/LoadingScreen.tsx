@@ -27,6 +27,8 @@ export default function LoadingScreen() {
     const timer = setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = 'auto';
+      // Signal other components that landing page is revealed
+      window.dispatchEvent(new Event('loading-complete'));
     }, TOTAL_DURATION + EXIT_BUFFER);
 
     return () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import LetterGlitch from './LetterGlitch';
 import CardNav from './CardNav';
+import Shuffle from './Shuffle';
 import { motion } from 'motion/react';
 
 export default function LandingPage() {
@@ -21,14 +22,23 @@ export default function LandingPage() {
 
       {/* Hero Center Text */}
       <main className="flex-1 flex flex-col items-center justify-center w-full px-4 text-center mt-[-60px]">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter pointer-events-none"
-        >
-          Hi, I’m Tanish Jagtap.
-        </motion.h1>
+        <Shuffle
+          text="Hi, I'm Tanish Jagtap."
+          tag="h1"
+          stagger={40}
+          scrambleDuration={350}
+          triggerOnHover={false}
+          waitLoading={true}
+          textAlign="center"
+          style={{
+            fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
+            fontWeight: 700,
+            letterSpacing: '-0.03em',
+            color: '#ffffff',
+            lineHeight: 1.1,
+            cursor: 'default',
+          }}
+        />
       </main>
 
       {/* Bottom Scroll Down Element */}
