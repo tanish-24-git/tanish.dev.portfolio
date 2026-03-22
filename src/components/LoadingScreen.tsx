@@ -3,16 +3,19 @@ import RotatingText from './RotatingText';
 import { AnimatePresence, motion } from 'motion/react';
 
 const greetings = [
-  "Hi", "Hello", "Namaste", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", 
-  "Привет", "你好", "こんにちは", "안녕하세요", "مرحبا", "שלום", "Hej", 
-  "Hoi", "Selam", "Sawubona", "Halo", "Sawasdee"
+  "Hello", 
+  "Bonjour", 
+  "Hola", 
+  "Ciao", 
+  "こんにちは",
+  "Namaste"
 ];
 
 export default function LoadingScreen() {
   const [isVisible, setIsVisible] = useState(true);
 
   // 🔥 MAIN CONTROL (change this only)
-  const TOTAL_DURATION = 8000; 
+  const TOTAL_DURATION = 2200; 
 
   // ⚡ auto-calculated per word timing
   const ROTATION_INTERVAL = TOTAL_DURATION / greetings.length;
