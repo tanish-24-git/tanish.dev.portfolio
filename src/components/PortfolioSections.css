@@ -212,14 +212,13 @@
   width: 100%;
   background: #61dca3;
   transform: scaleY(0);
-  transform-origin: bottom;
+  transform-origin: center;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 0;
 }
 
 .contact-link-row:hover::before {
   transform: scaleY(1);
-  transform-origin: top;
 }
 
 .contact-link-row:hover {
