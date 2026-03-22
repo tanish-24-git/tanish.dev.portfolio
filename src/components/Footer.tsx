@@ -7,17 +7,15 @@ const Footer = () => {
       {/* ── Top Section (Dark) ── */}
       <div className="footer-top">
         <div className="footer-top-container">
-          <h1 className="footer-huge-title">LET'S TALK</h1>
+          <h1 className="footer-huge-title">BUILDING SOMETHING BIG? I’M IN.</h1>
 
           <div className="footer-info-row">
             <div className="footer-info-left">
               <h2 className="footer-subtitle">
-                Have a project in mind?<br />
-                Let's build something great.
+                From ideas to execution — I work on AI-driven systems that solve real problems.
               </h2>
               <p className="footer-description">
-                I'm available for freelance projects and full-time opportunities. 
-                If you like what you see here—drop me a message.
+                Let’s collaborate and make it happen.
               </p>
             </div>
             
@@ -56,8 +54,8 @@ const Footer = () => {
         <div className="footer-bottom-container">
           <div className="footer-bottom-top">
             <h2 className="footer-bottom-heading">
-              That's all folks.<br />
-              Here are a few quick links to navigate through.
+              Take a Look Around<br />
+              Everything you need is just a click away.
             </h2>
             <div className="social-icon-circles">
               <a href="https://github.com/tanish-24-git" target="_blank" rel="noreferrer" className="circle-btn">
