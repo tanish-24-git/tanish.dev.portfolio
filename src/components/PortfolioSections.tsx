@@ -1,5 +1,7 @@
 import React from 'react';
 import './PortfolioSections.css';
+import ScrambledText from './ScrambledText';
+import './ScrambledText.css';
 
 const sections = [
   { id: 'about',    title: 'About',    bgColor: '#000000', content: 'Passionate full-stack developer with a focus on creating beautiful and functional web experiences.' },
@@ -40,11 +42,35 @@ const PortfolioSections = () => {
 
             {/* actual content */}
             <div className="section-content">
-              <h2 className="section-header">
-                <span className="first-letter">{section.title[0]}</span>
-                {section.title.slice(1)}
-              </h2>
-              <p className="section-description">{section.content}</p>
+              {section.id === 'about' ? (
+                <div className="about-grid">
+                  <div className="about-text-column">
+                    <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+                      Hi, I’m Tanish Jagtap — an AI & Data Science student passionate about artificial intelligence, machine learning, and intelligent systems.
+                    </ScrambledText>
+                    <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+                      My interests lie in exploring advanced AI systems, deep learning, and the intersection of artificial intelligence with quantum computing. I’m particularly focused on understanding how machine learning models work, how they can be optimized, and how they can be applied to solve real-world problems.
+                    </ScrambledText>
+                    <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+                      I actively study AI concepts, read research, and experiment with building intelligent systems to deepen my understanding of artificial intelligence and data-driven technologies. This combination of practical development and continuous learning helps me approach problems with a strong foundation in both theory and application.
+                    </ScrambledText>
+                    <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
+                      I aim to contribute to the future of AI by exploring innovative ideas, improving system efficiency, and building impactful intelligent solutions.
+                    </ScrambledText>
+                  </div>
+                  <div className="about-media-column">
+                    <span className="about-media-placeholder">Place Image / Video Here</span>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <h2 className="section-header">
+                    <span className="first-letter">{section.title[0]}</span>
+                    {section.title.slice(1)}
+                  </h2>
+                  <p className="section-description">{section.content}</p>
+                </>
+              )}
             </div>
           </div>
         </section>
