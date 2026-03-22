@@ -1,0 +1,144 @@
+/* ── Container ── */
+.portfolio-sections-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Each section ── */
+.portfolio-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+/* ══════════════════════════════
+   TOP BAR  (horizontal margin)
+══════════════════════════════ */
+.section-top-bar {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* left corner cell — same width as the body-left-margin below */
+.top-bar-corner {
+  width: 80px;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 18px 0;
+  flex-shrink: 0;
+}
+
+.corner-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* right cell — big bold section title */
+.top-bar-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ══════════════════════════════
+   BODY  (left margin + content)
+══════════════════════════════ */
+.section-body {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+/* left margin column — lines up with top-bar-corner */
+.body-left-margin {
+  width: 80px;
+  min-width: 80px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* main content */
+.section-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 10% 60px 60px;
+  color: #ffffff;
+}
+
+/* ══════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════ */
+.section-header {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  margin: 0 0 2rem 0;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.first-letter {
+  color: #61dca3;
+}
+
+.section-description {
+  font-size: 1.35rem;
+  max-width: 600px;
+  line-height: 1.7;
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════
+   MOBILE
+══════════════════════════════ */
+@media (max-width: 768px) {
+  .top-bar-corner,
+  .body-left-margin {
+    width: 44px;
+    min-width: 44px;
+  }
+
+  .top-bar-title {
+    padding: 16px 20px;
+    font-size: 1.1rem;
+  }
+
+  .section-content {
+    padding: 40px 6% 40px 24px;
+  }
+
+  .section-header {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+}
