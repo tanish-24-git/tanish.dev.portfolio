@@ -3,6 +3,8 @@ import './PortfolioSections.css';
 import ScrambledText from './ScrambledText';
 import './ScrambledText.css';
 import FlipCard from './FlipCard';
+import ScrollingLogos from './ScrollingLogos';
+import './ScrollingLogos.css';
 
 const sections = [
   { id: 'about',    title: 'About',    bgColor: '#000000', content: 'Passionate full-stack developer with a focus on creating beautiful and functional web experiences.' },
@@ -39,7 +41,9 @@ const PortfolioSections = () => {
           {/* ── Body ── */}
           <div className="section-body">
             {/* left margin column (continues the vertical line) */}
-            <div className="body-left-margin" />
+            <div className="body-left-margin">
+              <ScrollingLogos />
+            </div>
 
             {/* actual content */}
             <div className="section-content">
