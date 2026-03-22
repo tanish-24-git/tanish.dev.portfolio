@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="footer-info-row">
             <div className="footer-info-left">
               <h2 className="footer-subtitle">
-                From ideas to execution — I work on AI-driven systems that solve real problems.
+                From ideas to execution, I work on AI-driven systems that solve real problems.
               </h2>
               <p className="footer-description">
                 Let’s collaborate and make it happen.

@@ -47,7 +47,7 @@ const PortfolioSections = () => {
                 <div className="about-grid">
                   <div className="about-text-column">
                     <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
-                      Hi, I’m Tanish Jagtap — an AI & Data Science student passionate about artificial intelligence, machine learning, and intelligent systems.
+                      Hi, I’m Tanish Jagtap an AI & Data Science student passionate about artificial intelligence, machine learning, and intelligent systems.
                     </ScrambledText>
                     <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
                       My interests lie in exploring advanced AI systems, deep learning, and the intersection of artificial intelligence with quantum computing. I’m particularly focused on understanding how machine learning models work, how they can be optimized, and how they can be applied to solve real-world problems.
@@ -58,6 +58,19 @@ const PortfolioSections = () => {
                     <ScrambledText className="scrambled-text-demo" radius={100} duration={1.2} speed={0.5} scrambleChars=".:">
                       I aim to contribute to the future of AI by exploring innovative ideas, improving system efficiency, and building impactful intelligent solutions.
                     </ScrambledText>
+                    
+                    {/* Resume Section */}
+                    <div className="resume-section">
+                      <h3 className="resume-heading">Here’s a link to my résumé.</h3>
+                      <a 
+                        href="https://drive.google.com/file/d/19SQZPEm0zcmAsnQ4A5xcU_0JiayEUn6h/view?usp=sharing" 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="resume-link"
+                      >
+                        My Résumé <span className="resume-arrow">↗</span>
+                      </a>
+                    </div>
                   </div>
                   <div className="about-media-column" style={{ padding: 0, border: 'none', background: 'transparent' }}>
                     <FlipCard
