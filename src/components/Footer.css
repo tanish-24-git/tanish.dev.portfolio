@@ -3,9 +3,11 @@
   display: flex;
   flex-direction: column;
   font-family: 'Outfit', sans-serif;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 20;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 /* ══════════════════════════════
@@ -14,9 +16,13 @@
 .footer-top {
   background-color: #000000;
   color: #ffffff;
-  padding: 80px 10% 0;
+  padding: 80px 10% 40px;
   position: relative;
   overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer-top-container {

@@ -59,6 +59,16 @@ export default function LandingPage() {
     }
   });
 
+  // Keep opacity in sync in case motion value doesn't fire a 'change' when remounting/switching to home
+  useEffect(() => {
+    if (currentView === 'home') {
+      const el = document.getElementById('about-static-image');
+      if (el) {
+        el.style.opacity = smooth.get() >= 0.99 ? '1' : '0';
+      }
+    }
+  }, [currentView, smooth]);
+
   // === Text: splits apart as image leaves ===
   const leftX     = useTransform(smooth, [0, 0.15, 1], ['0px', '0px', '-80px']);
   const rightX    = useTransform(smooth, [0, 0.15, 1], ['0px', '0px',  '80px']);
@@ -98,17 +108,21 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {currentView === 'home' && (
-        <div ref={heroWrapperRef} id="hero" className="relative z-[50] h-screen w-full bg-black flex flex-col">
-          {/* Background Glitch */}
-          <div className="absolute inset-0 z-0 opacity-30">
-            <LetterGlitch
-              glitchSpeed={50}
-              centerVignette={true}
-              outerVignette={false}
-              smooth={true}
-            />
-          </div>
+      {/* Hero section is always mounted to preserve useScroll refs, but hidden when not 'home' */}
+      <div 
+        ref={heroWrapperRef} 
+        id="hero" 
+        className={`relative z-[50] min-h-screen w-full bg-black flex flex-col ${currentView === 'home' ? 'flex' : 'hidden'}`}
+      >
+        {/* Background Glitch */}
+        <div className="absolute inset-0 z-0 opacity-30">
+          <LetterGlitch
+            glitchSpeed={50}
+            centerVignette={true}
+            outerVignette={false}
+            smooth={true}
+          />
+        </div>
 
             {/* 3-column hero layout */}
             <main className="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-center w-full max-w-[1600px] mx-auto px-4 md:px-10 mt-16 md:mt-0 gap-8 md:gap-0">
@@ -116,7 +130,7 @@ export default function LandingPage() {
               {/* LEFT — HI I'M + TANISH */}
               <motion.div
                 style={{ x: leftX, opacity: textFade }}
-                className="flex-1 flex flex-col items-center md:items-end justify-center w-full md:pr-10 z-20 min-w-0"
+                className="w-full shrink-0 md:flex-1 flex flex-col items-center md:items-end justify-center md:pr-10 z-20 min-w-0"
               >
                 <Shuffle
                   text="HI I'M"
@@ -192,7 +206,7 @@ export default function LandingPage() {
               {/* RIGHT — AI ENGINEER + JAGTAP */}
               <motion.div
                 style={{ x: rightX, opacity: textFade }}
-                className="flex-1 flex flex-col items-center md:items-start justify-center w-full md:pl-10 z-20 min-w-0"
+                className="w-full shrink-0 md:flex-1 flex flex-col items-center md:items-start justify-center md:pl-10 z-20 min-w-0"
               >
                 <span className="text-white/80 text-[0.65rem] md:text-[0.75rem] tracking-[0.2em] uppercase font-semibold mb-3 md:text-left text-center w-full">
                   Ai Engineer
@@ -244,13 +258,12 @@ export default function LandingPage() {
             </motion.div>
 
           </div>
-      )}
 
       {/* Portfolio sections (sticky card stacking) */}
-      <PortfolioSections currentView={currentView} onGoHome={() => setCurrentView('home')} />
-
-      {/* Footer */}
-      <Footer />
+      <PortfolioSections currentView={currentView} onGoHome={() => setCurrentView('home')}>
+        {/* Footer */}
+        <Footer />
+      </PortfolioSections>
     </div>
     </ReactLenis>
   );

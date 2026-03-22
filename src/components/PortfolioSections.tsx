@@ -20,9 +20,11 @@ const sections = [
 const PortfolioSections = ({
   currentView = 'home',
   onGoHome,
+  children,
 }: {
   currentView?: string;
   onGoHome?: () => void;
+  children?: React.ReactNode;
 }) => {
   const visibleSections = sections.filter((section) => {
     if (currentView === 'home') {
@@ -135,6 +137,7 @@ const PortfolioSections = ({
           </section>
         );
       })}
+      {children}
     </div>
   );
 };
