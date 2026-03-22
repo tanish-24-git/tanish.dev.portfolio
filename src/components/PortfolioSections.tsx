@@ -98,11 +98,9 @@ const PortfolioSections = ({
                           </div>
                         </div>
                         <div className="about-media-column" style={{ padding: 0, border: 'none', background: 'transparent' }}>
-                          <FlipCard
-                            frontImage="/about/overlay.png"
-                            backImage="/about/base.jpeg"
-                            alt="Tanish Jagtap"
-                          />
+                          <div id="about-static-image" style={{ opacity: currentView === 'home' ? 0 : 1 }} className="w-[80vw] md:w-[35vw] max-w-[480px] aspect-[3/4] relative rounded-[2rem] shadow-[0_30px_70px_rgba(0,0,0,0.9)] border border-white/10">
+                            <img src="/about/base.jpeg" alt="Tanish Jagtap" className="w-full h-full object-cover object-center rounded-[2rem] overflow-hidden" />
+                          </div>
                         </div>
                       </div>
                     )}
@@ -125,7 +123,7 @@ const PortfolioSections = ({
                           </a>
                           <a href="mailto:tanishjagtap24@gmail.com" className="contact-link-row">
                             <span className="contact-link-name">GMAIL</span>
-                            <span className="contact-link-desc">Reach out to me via email for collaborations or inquiries ↗</span>
+                            <span className="contact-link-desc">Reach out to me via email for inquiries ↗</span>
                           </a>
                         </div>
                       </div>

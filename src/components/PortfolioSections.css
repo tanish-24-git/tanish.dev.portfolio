@@ -1,6 +1,9 @@
 /* ── Container ── */
 .portfolio-sections-container {
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
 }
 
 /* ── Each section ── */
