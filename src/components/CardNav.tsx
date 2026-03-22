@@ -51,23 +51,16 @@ const items = [
   }
 ];
 
-const ArrowIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }}>
-    <line x1="7" y1="17" x2="17" y2="7"></line>
-    <polyline points="7 7 17 7 17 17"></polyline>
-  </svg>
-);
 
 const CardNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [timeStr, setTimeStr] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Update IST time every minute
+  // Update IST time and detect screen size
   useEffect(() => {
     const updateTime = () => {
-      // Calculate Indian Standard Time (UTC+5:30)
       const now = new Date();
-      // Format time safely
       const formattedTime = new Intl.DateTimeFormat('en-US', {
         timeZone: 'Asia/Kolkata',
         hour: '2-digit',
@@ -78,9 +71,20 @@ const CardNav = () => {
       setTimeStr(`${formattedTime} IST`);
     };
 
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
     updateTime(); // initial call
+    checkMobile(); // initial call
+    
     const interval = setInterval(updateTime, 60000); // update every minute
-    return () => clearInterval(interval);
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   return (
@@ -88,7 +92,7 @@ const CardNav = () => {
       <motion.div 
         className={`card-nav ${isOpen ? 'open' : ''}`}
         initial={{ height: 60 }}
-        animate={{ height: isOpen ? 380 : 60 }}
+        animate={{ height: isOpen ? (isMobile ? 400 : 145) : 60 }}
         transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
       >
         <div className="card-nav-top">
@@ -116,28 +120,15 @@ const CardNav = () => {
         {/* Dropdown Content */}
         <div className="card-nav-content">
           {items.map((item, i) => (
-            <div 
-              key={i} 
+            <a
+              key={i}
+              href={`#${item.label.toLowerCase()}`}
               className="nav-card"
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
+              onClick={() => setIsOpen(false)}
             >
-              <a 
-                href={`#${item.label.toLowerCase().replace('s', 's') === 'contacts' ? 'contacts' : item.label.toLowerCase()}`} 
-                className="nav-card-label" 
-                style={{ textDecoration: 'none', color: item.textColor, display: 'block' }}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
-              <div className="nav-card-links">
-                {item.links.map((link, j) => (
-                  <a key={j} href="#" aria-label={link.ariaLabel} className="nav-card-link" style={{ color: item.textColor }}>
-                    <ArrowIcon />
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
+              <span className="nav-card-label">{item.label}</span>
+            </a>
           ))}
         </div>
       </motion.div>
