@@ -4,6 +4,12 @@ import './CardNav.css';
 
 const items = [
   {
+    label: "Home",
+    bgColor: "#050505",
+    textColor: "#fff",
+    links: []
+  },
+  {
     label: "About",
     bgColor: "#000000",
     textColor: "#fff",
@@ -52,7 +58,7 @@ const items = [
 ];
 
 
-const CardNav = () => {
+const CardNav = ({ onItemClick }: { onItemClick?: (label: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [timeStr, setTimeStr] = useState('');
   const [isMobile, setIsMobile] = useState(false);
@@ -92,7 +98,7 @@ const CardNav = () => {
       <motion.div 
         className={`card-nav ${isOpen ? 'open' : ''}`}
         initial={{ height: 60 }}
-        animate={{ height: isOpen ? (isMobile ? 400 : 145) : 60 }}
+        animate={{ height: isOpen ? (isMobile ? 470 : 145) : 60 }}
         transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
       >
         <div className="card-nav-top">
@@ -125,7 +131,11 @@ const CardNav = () => {
               href={`#${item.label.toLowerCase()}`}
               className="nav-card"
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsOpen(false);
+                if (onItemClick) onItemClick(item.label);
+              }}
             >
               <span className="nav-card-label">{item.label}</span>
             </a>

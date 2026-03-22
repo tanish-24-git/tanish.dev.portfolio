@@ -14,10 +14,17 @@ const sections = [
   { id: 'contacts', title: 'Contacts', bgColor: '#2D2D2D', content: "Let's build something amazing together. Reach out via email or connect on social platforms." },
 ];
 
-const PortfolioSections = () => {
+const PortfolioSections = ({ currentView = 'home' }: { currentView?: string }) => {
+  const visibleSections = sections.filter((section) => {
+    if (currentView === 'home') {
+      return section.id === 'about' || section.id === 'contacts';
+    }
+    return section.id === currentView;
+  });
+
   return (
     <div className="portfolio-sections-container">
-      {sections.map((section) => (
+      {visibleSections.map((section) => (
         <section
           key={section.id}
           id={section.id}
