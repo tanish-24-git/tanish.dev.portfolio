@@ -5,16 +5,34 @@ import './CardNav.css';
 const items = [
   {
     label: "About",
-    bgColor: "#0D0716",
+    bgColor: "#000000",
     textColor: "#fff",
     links: [
-      { label: "Company", ariaLabel: "About Company" },
-      { label: "Careers", ariaLabel: "About Careers" }
+      { label: "My Story", ariaLabel: "About My Story" },
+      { label: "Skills", ariaLabel: "About Skills" }
     ]
   },
   {
-    label: "Projects", 
-    bgColor: "#170D27",
+    label: "Awards",
+    bgColor: "#111111",
+    textColor: "#fff",
+    links: [
+      { label: "Achievements", ariaLabel: "My Achievements" },
+      { label: "Certifications", ariaLabel: "My Certifications" }
+    ]
+  },
+  {
+    label: "Blogs",
+    bgColor: "#1A1A1A",
+    textColor: "#fff",
+    links: [
+      { label: "Recent Posts", ariaLabel: "Recent Blog Posts" },
+      { label: "Tech Talks", ariaLabel: "Technology Blogs" }
+    ]
+  },
+  {
+    label: "Project",
+    bgColor: "#222222",
     textColor: "#fff",
     links: [
       { label: "Featured", ariaLabel: "Featured Projects" },
@@ -22,8 +40,8 @@ const items = [
     ]
   },
   {
-    label: "Contact",
-    bgColor: "#271E37", 
+    label: "Contacts",
+    bgColor: "#2D2D2D",
     textColor: "#fff",
     links: [
       { label: "Email", ariaLabel: "Email us" },
@@ -70,7 +88,7 @@ const CardNav = () => {
       <motion.div 
         className={`card-nav ${isOpen ? 'open' : ''}`}
         initial={{ height: 60 }}
-        animate={{ height: isOpen ? 340 : 60 }}
+        animate={{ height: isOpen ? 380 : 60 }}
         transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
       >
         <div className="card-nav-top">
