@@ -29,8 +29,8 @@
 
 /* left corner cell — same width as the body-left-margin below */
 .top-bar-corner {
-  width: 80px;
-  min-width: 80px;
+  width: 150px;
+  min-width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,8 +76,8 @@
 
 /* left margin column — lines up with top-bar-corner */
 .body-left-margin {
-  width: 80px;
-  min-width: 80px;
+  width: 150px;
+  min-width: 150px;
   flex-shrink: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
