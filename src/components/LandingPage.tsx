@@ -3,6 +3,7 @@ import LetterGlitch from './LetterGlitch';
 import CardNav from './CardNav';
 import Shuffle from './Shuffle';
 import PortfolioSections from './PortfolioSections';
+import Footer from './Footer';
 import { motion } from 'motion/react';
 
 export default function LandingPage() {
@@ -16,7 +17,7 @@ export default function LandingPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="h-screen w-full relative flex flex-col overflow-hidden">
+      <div id="hero" className="h-screen w-full relative flex flex-col overflow-hidden">
         {/* Background Glitch Canvas */}
         <div className="absolute inset-0 z-[-1]">
           <LetterGlitch
@@ -64,6 +65,9 @@ export default function LandingPage() {
 
       {/* Portfolio Sections below the fold */}
       <PortfolioSections />
+
+      {/* Footer Section */}
+      <Footer />
     </div>
   );
 }

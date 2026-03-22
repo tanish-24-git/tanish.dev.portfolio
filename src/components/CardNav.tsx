@@ -121,7 +121,14 @@ const CardNav = () => {
               className="nav-card"
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
             >
-              <div className="nav-card-label">{item.label}</div>
+              <a 
+                href={`#${item.label.toLowerCase().replace('s', 's') === 'contacts' ? 'contacts' : item.label.toLowerCase()}`} 
+                className="nav-card-label" 
+                style={{ textDecoration: 'none', color: item.textColor, display: 'block' }}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </a>
               <div className="nav-card-links">
                 {item.links.map((link, j) => (
                   <a key={j} href="#" aria-label={link.ariaLabel} className="nav-card-link" style={{ color: item.textColor }}>
