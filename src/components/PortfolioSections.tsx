@@ -2,6 +2,7 @@ import React from 'react';
 import './PortfolioSections.css';
 import ScrambledText from './ScrambledText';
 import './ScrambledText.css';
+import FlipCard from './FlipCard';
 
 const sections = [
   { id: 'about',    title: 'About',    bgColor: '#000000', content: 'Passionate full-stack developer with a focus on creating beautiful and functional web experiences.' },
@@ -58,8 +59,12 @@ const PortfolioSections = () => {
                       I aim to contribute to the future of AI by exploring innovative ideas, improving system efficiency, and building impactful intelligent solutions.
                     </ScrambledText>
                   </div>
-                  <div className="about-media-column">
-                    <span className="about-media-placeholder">Place Image / Video Here</span>
+                  <div className="about-media-column" style={{ padding: 0, border: 'none', background: 'transparent' }}>
+                    <FlipCard
+                      frontImage="/about/overlay.png"
+                      backImage="/about/base.jpeg"
+                      alt="Tanish Jagtap"
+                    />
                   </div>
                 </div>
               ) : (
