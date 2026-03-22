@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   font-family: 'Outfit', sans-serif;
+  position: relative;
+  z-index: 20;
   overflow: hidden;
 }
 

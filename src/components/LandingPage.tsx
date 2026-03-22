@@ -37,7 +37,7 @@ export default function LandingPage() {
 
       {/* Hero Section (Only visible on Home) */}
       {currentView === 'home' && (
-        <div id="hero" className="h-screen w-full relative flex flex-col overflow-hidden">
+        <div id="hero" className="h-screen w-full sticky top-0 bg-black flex flex-col overflow-hidden z-0">
           {/* Background Glitch Canvas */}
           <div className="absolute inset-0 z-[-1]">
             <LetterGlitch
