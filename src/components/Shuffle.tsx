@@ -97,8 +97,12 @@ const Shuffle: React.FC<ShuffleProps> = ({
     };
 
     if (waitLoading) {
-      // Subscribe to global loading event
-      window.addEventListener('loading-complete', handleLoaded);
+      if ((window as any).__LOADING_COMPLETE__) {
+        playAnimation();
+      } else {
+        // Subscribe to global loading event
+        window.addEventListener('loading-complete', handleLoaded);
+      }
     } else {
       // Standard IntersectionObserver logic
       const observer = new IntersectionObserver(

@@ -89,7 +89,7 @@ export default function LandingPage() {
       )}
 
       {/* Portfolio Sections below the fold */}
-      <PortfolioSections currentView={currentView} />
+      <PortfolioSections currentView={currentView} onGoHome={() => setCurrentView('home')} />
 
       {/* Footer Section */}
       <Footer />

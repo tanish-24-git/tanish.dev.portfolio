@@ -28,6 +28,7 @@ export default function LoadingScreen() {
       setIsVisible(false);
       document.body.style.overflow = 'auto';
       // Signal other components that landing page is revealed
+      (window as any).__LOADING_COMPLETE__ = true;
       window.dispatchEvent(new Event('loading-complete'));
     }, TOTAL_DURATION + EXIT_BUFFER);
 
