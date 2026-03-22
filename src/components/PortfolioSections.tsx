@@ -84,6 +84,41 @@ const PortfolioSections = () => {
                     />
                   </div>
                 </div>
+              ) : section.id === 'contacts' ? (
+                <div className="contact-section">
+                  <div className="contact-heading-row">
+                    <h2 className="contact-main-title">
+                      GET IN TOUCH WITH ME<span className="contact-dot">.</span>
+                    </h2>
+                  </div>
+                  <div className="contact-links">
+                    <a
+                      href="https://www.linkedin.com/in/tanish-jagtap/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="contact-link-row"
+                    >
+                      <span className="contact-link-name">LINKEDIN</span>
+                      <span className="contact-link-desc">Connect with me professionally ↗</span>
+                    </a>
+                    <a
+                      href="https://github.com/tanish-24-git"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="contact-link-row"
+                    >
+                      <span className="contact-link-name">GITHUB</span>
+                      <span className="contact-link-desc">Explore my open-source projects ↗</span>
+                    </a>
+                    <a
+                      href="mailto:tanishjagtap24@gmail.com"
+                      className="contact-link-row"
+                    >
+                      <span className="contact-link-name">GMAIL</span>
+                      <span className="contact-link-desc">Reach out to me via email for collaborations or inquiries ↗</span>
+                    </a>
+                  </div>
+                </div>
               ) : (
                 <>
                   <h2 className="section-header">

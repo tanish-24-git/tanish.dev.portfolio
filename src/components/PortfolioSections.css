@@ -144,3 +144,141 @@
     font-size: 1rem;
   }
 }
+
+/* ══════════════════════════════
+   CONTACT SECTION
+══════════════════════════════ */
+.contact-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading row */
+.contact-heading-row {
+  padding: 0 0 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 0;
+}
+
+.contact-main-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: inherit;
+  margin: 0;
+}
+
+.contact-dot {
+  color: #eb5939; /* Keep the original dot color from the image reference if user explicitly wants it to look like that, but wait, user said "match the theme of of the my contact page and apply hover color according to that". Their theme is dark with green `#61dca3`. So I'll use `#61dca3` */
+}
+.contact-dot {
+  color: #61dca3;
+}
+
+/* Links container */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Each platform row */
+.contact-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  color: #ffffff;
+  background: transparent;
+  transition: background 0.4s ease, color 0.4s ease;
+  cursor: pointer;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background fill for hover */
+.contact-link-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #61dca3;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 0;
+}
+
+.contact-link-row:hover::before {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.contact-link-row:hover {
+  color: #000000; /* Contrast against the green bg */
+}
+
+/* Platform name (big bold text) */
+.contact-link-name {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-family: inherit;
+  transition: color 0.4s ease, transform 0.4s ease;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Description text (right side) */
+.contact-link-desc {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.4s ease;
+  max-width: 320px;
+  text-align: right;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-link-row:hover .contact-link-desc {
+  opacity: 1;
+  transform: translateX(0);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.contact-link-row:hover .contact-link-name {
+  color: #000000; /* Invert text color on hover */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-link-row {
+    padding: 24px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .contact-link-desc {
+    opacity: 0.7;
+    transform: none;
+    text-align: left;
+    max-width: 100%;
+    font-size: 0.85rem;
+  }
+}
