@@ -13,11 +13,11 @@
   display: block;
   height: 60px;
   padding: 0;
-  background-color: #ffffff;
+  background-color: white;
   color: #000000;
   border: 0.5px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.75rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
   will-change: height;
@@ -34,7 +34,8 @@
   justify-content: space-between;
   padding: 0.5rem 0.45rem 0.55rem 1.1rem;
   z-index: 2;
-  background-color: #ffffff;
+  background-color: transparent;
+  backdrop-filter: blur(8px);
 }
 
 .hamburger-menu {
