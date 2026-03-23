@@ -20,10 +20,12 @@ const sections = [
 const PortfolioSections = ({
   currentView = 'home',
   onGoHome,
+  onOpenSidebar,
   children,
 }: {
   currentView?: string;
   onGoHome?: () => void;
+  onOpenSidebar?: () => void;
   children?: React.ReactNode;
 }) => {
   const visibleSections = sections.filter((section) => {
@@ -56,8 +58,12 @@ const PortfolioSections = ({
               <>
                 {/* Top bar */}
                 <div className="section-top-bar">
-                  <div className="top-bar-corner">
-                    <span className="corner-label">{section.title.toLowerCase()}</span>
+                  <div className="top-bar-corner cursor-pointer group flex items-center justify-center" onClick={onOpenSidebar}>
+                    <div className="relative w-9 h-9 md:w-12 md:h-12 rounded-full border border-white/10 flex flex-col items-end justify-center gap-[4px] md:gap-[5px] transition-all duration-500 group-hover:border-[#61dca3]/50 group-hover:bg-[#61dca3]/5 hover:shadow-[0_0_20px_rgba(97,220,163,0.15)] pr-[10px] md:pr-[14px]">
+                      <div className="w-[16px] md:w-[20px] h-[1.5px] md:h-[2px] bg-[#61dca3] rounded-full transition-all duration-400 group-hover:w-[22px] md:group-hover:w-[26px]"></div>
+                      <div className="w-[10px] md:w-[12px] h-[1.5px] md:h-[2px] bg-[#61dca3] rounded-full transition-all duration-400 group-hover:w-[22px] md:group-hover:w-[26px]"></div>
+                      <div className="w-[16px] md:w-[20px] h-[1.5px] md:h-[2px] bg-[#61dca3] rounded-full transition-all duration-400 group-hover:w-[12px] md:group-hover:w-[14px]"></div>
+                    </div>
                   </div>
                   <div className="top-bar-title">
                     <span className="first-letter">{section.title[0]}</span>

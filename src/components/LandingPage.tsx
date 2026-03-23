@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import LetterGlitch from './LetterGlitch';
-import CardNav from './CardNav';
 import Shuffle from './Shuffle';
 import PortfolioSections from './PortfolioSections';
 import Footer from './Footer';
@@ -54,7 +53,10 @@ export default function LandingPage() {
   const backOpacity  = useTransform(smooth, [0, 0.575, 0.576, 1], [0, 0, 1, 1]);
 
   useMotionValueEvent(smooth, "change", (latest) => {
-    if (currentView !== 'home') return;
+    if (currentView !== 'home') {
+      return;
+    }
+
     const el = document.getElementById('about-static-image');
     if (el) {
       el.style.opacity = latest >= 0.99 ? '1' : '0';
@@ -103,12 +105,6 @@ export default function LandingPage() {
   return (
     <ReactLenis root ref={lenisRef} autoRaf={true} options={{ lerp: 0.05 }}>
       <div className="relative w-full text-white font-outfit flex flex-col">
-      {/* Navbar */}
-      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center pointer-events-none">
-        <div className="w-full max-w-[800px] pointer-events-auto mt-[2em]">
-          <CardNav onItemClick={handleNavClick} />
-        </div>
-      </div>
 
       {/* Hero section is always mounted to preserve useScroll refs, but hidden when not 'home' */}
       <div 
@@ -302,7 +298,11 @@ export default function LandingPage() {
           </div>
 
       {/* Portfolio sections (sticky card stacking) */}
-      <PortfolioSections currentView={currentView} onGoHome={() => setCurrentView('home')}>
+      <PortfolioSections 
+        currentView={currentView} 
+        onGoHome={() => setCurrentView('home')}
+        onOpenSidebar={() => setIsSidebarOpen(true)}
+      >
         {/* Footer */}
         <Footer />
       </PortfolioSections>
