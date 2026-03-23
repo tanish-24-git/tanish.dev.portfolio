@@ -227,7 +227,7 @@ export default function LandingPage() {
                     Dive into a collection of stunning 3D models and designs crafted with Artoo software, tailored for the modern digital artist.
                   </p>
                   <button className="bg-white/10 hover:bg-white/20 transition-all duration-300 border border-transparent hover:border-white/20 px-8 py-3 text-[0.8rem] font-medium w-fit text-white rounded-sm mt-3">
-                    Start your work
+                    Send a Message
                   </button>
                 </div>
               </motion.div>
@@ -258,40 +258,72 @@ export default function LandingPage() {
               </svg>
             </motion.div>
 
-            {/* Bottom Info Strip for Home view */}
+            {/* Bottom Info Strip for Home view (Animated News Ticker Marquee) */}
             <motion.div 
               style={{ opacity: textFade }}
-              className="absolute bottom-0 left-0 lg:left-[80px] right-0 bg-[#080d0b]/85 backdrop-blur-md border-t border-[#12241d]/50 z-20 hidden lg:flex h-36 mt-auto pointer-events-auto"
+              className="absolute bottom-0 left-0 lg:left-[80px] right-0 bg-[#080d0b]/85 backdrop-blur-md border-t border-[#12241d]/50 z-20 hidden lg:flex h-36 mt-auto pointer-events-auto overflow-hidden"
             >
-              {/* Left: Events */}
-              <div className="flex-[1.5] flex flex-col justify-center px-10 border-r border-[#12241d]/50">
-                <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#61dca3] opacity-90 mb-3">Events</span>
-                <div className="flex gap-16 text-white/80">
-                  <div>
-                    <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">SF - 3D Art Workshop, Aug 12, 5-7 PM</p>
-                    <p className="text-[0.65rem] text-white/40 mt-1">Created by @darshan Ui Ux Designer</p>
+              <style>{`
+                @keyframes seamlessTicker {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-25%); }
+                }
+                .infinite-ticker {
+                  animation: seamlessTicker 30s linear infinite;
+                  will-change: transform;
+                }
+              `}</style>
+              <div className="flex items-center h-full w-max infinite-ticker">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="flex shrink-0 items-center h-full">
+                    
+                    {/* Section 1: Events */}
+                    <div className="flex flex-col justify-center h-full px-12 border-r border-[#12241d]/50">
+                      <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#61dca3] opacity-90 mb-3">Events</span>
+                      <div className="flex gap-16 text-white/80">
+                        <div>
+                          <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">SF - 3D Art Workshop, Aug 12, 5-7 PM</p>
+                          <p className="text-[0.65rem] text-white/40 mt-1">Created by @darshan Ui Ux Designer</p>
+                        </div>
+                        <div>
+                          <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">Live VR Session - Aug 15, 6-8 PM</p>
+                          <p className="text-[0.65rem] text-white/40 mt-1">For @Xyz tec company</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Section 2: News (Image + Text) */}
+                    <div className="flex items-center gap-8 h-full px-12 border-r border-[#12241d]/50">
+                      <div className="w-24 h-24 relative overflow-hidden flex-shrink-0 bg-[#0a1411]">
+                        <img src="/about/lego_neo.jpeg" alt="Lego Neo" className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" />
+                      </div>
+                      <div className="flex flex-col max-w-[420px]">
+                        <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#61dca3] opacity-90 mb-2">News</span>
+                        <div>
+                          <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">Meet Developer of the Year: @Tanish</p>
+                          <p className="text-[0.7rem] text-white/60 mt-1">Currently busy building systems, breaking limits, and probably running on caffeine. Not all experiments make it here — some live straight on GitHub.</p>
+                          <span className="text-[0.7rem] font-medium text-[#61dca3] hover:text-[#61b3dc] cursor-pointer inline-block mt-2 transition-colors">Read More...</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Section 3: Showcase Placeholder (Image + Text) */}
+                    <div className="flex items-center gap-8 h-full px-12 border-r border-[#12241d]/50">
+                      <div className="w-24 h-24 relative overflow-hidden flex-shrink-0 bg-[#080d0b] border border-white/5 flex items-center justify-center">
+                        <span className="text-[#61dca3]/40 text-[0.6rem] tracking-widest uppercase">Image</span>
+                      </div>
+                      <div className="flex flex-col max-w-[380px]">
+                        <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#61dca3] opacity-90 mb-2">Showcase</span>
+                        <div>
+                          <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">Upcoming Project Release</p>
+                          <p className="text-[0.7rem] text-white/60 mt-1">This is your 3rd section placeholder. You can safely add an image and new content descriptions right here when your next build is completely ready.</p>
+                          <span className="text-[0.7rem] font-medium text-[#61dca3] hover:text-[#61b3dc] cursor-pointer inline-block mt-2 transition-colors">Discover...</span>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
-                  <div>
-                    <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">Live VR Session - Aug 15, 6-8 PM.</p>
-                    <p className="text-[0.65rem] text-white/40 mt-1">For @Xyz tec company</p>
-                  </div>
-                </div>
-                <span className="text-[#61dca3]/50 mt-2 text-sm">...</span>
-              </div>
-              
-              {/* Center Card */}
-              <div className="w-36 h-full relative overflow-hidden flex items-center justify-center p-0 border-r border-[#12241d]/50 bg-[#0a1411] bg-cover bg-center">
-                <img src="/about/lego_neo.jpeg" alt="Lego Neo" className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" />
-              </div>
-              
-              {/* Right: News */}
-              <div className="flex-1 flex flex-col justify-center px-10">
-                <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-[#61dca3] opacity-90 mb-3">News</span>
-                <div>
-                  <p className="text-[0.8rem] font-medium hover:text-[#61dca3] transition-colors cursor-default">Meet Artist of the Month: @Alex Chen</p>
-                  <p className="text-[0.7rem] text-white/60 mt-1 max-w-[400px]">Discover Alex's stunning 3D worlds created with Artoo. Read More for an exclusive interview.</p>
-                  <span className="text-[0.7rem] font-medium text-[#61dca3] hover:text-[#61b3dc] cursor-pointer inline-block mt-2 transition-colors">Read More...</span>
-                </div>
+                ))}
               </div>
             </motion.div>
 

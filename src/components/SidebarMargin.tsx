@@ -47,7 +47,6 @@ const SidebarMargin = ({ onOpen }: { onOpen?: () => void }) => {
 
       {/* Center Label */}
       <div className="sidebar-section-label">{activeSection}</div>
-      <div className="sidebar-line" />
 
       {/* Bottom Socials */}
       <div className="sidebar-socials">
