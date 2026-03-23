@@ -3,7 +3,7 @@ import './SidebarMargin.css';
 
 const sections = ['Home', 'About', 'Awards', 'Blogs', 'Project', 'Contacts'];
 
-const SidebarMargin = () => {
+const SidebarMargin = ({ onOpen }: { onOpen?: () => void }) => {
   const [activeSection, setActiveSection] = useState('Home');
 
   useEffect(() => {
@@ -36,8 +36,23 @@ const SidebarMargin = () => {
 
   return (
     <div className="sidebar-margin">
+      {/* Top Hamburger */}
+      <div className="sidebar-hamburger" onClick={onOpen}>
+        <div className="sidebar-hamburger-line line-1" />
+        <div className="sidebar-hamburger-line line-2" />
+        <div className="sidebar-hamburger-line line-3" />
+      </div>
+
+      {/* Center Label */}
       <div className="sidebar-section-label">{activeSection}</div>
       <div className="sidebar-line" />
+
+      {/* Bottom Socials */}
+      <div className="sidebar-socials">
+        <span>Tw</span>
+        <span>In</span>
+        <span>Fb</span>
+      </div>
     </div>
   );
 };

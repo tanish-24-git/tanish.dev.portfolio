@@ -4,11 +4,13 @@ import CardNav from './CardNav';
 import Shuffle from './Shuffle';
 import PortfolioSections from './PortfolioSections';
 import Footer from './Footer';
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'motion/react';
+import SidebarMargin from './SidebarMargin';
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, AnimatePresence } from 'motion/react';
 import { ReactLenis } from 'lenis/react';
 
 export default function LandingPage() {
   const [currentView, setCurrentView] = useState('home');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const lenisRef = useRef<any>(null);
 
@@ -112,23 +114,14 @@ export default function LandingPage() {
       <div 
         ref={heroWrapperRef} 
         id="hero" 
-        className={`relative z-[50] min-h-screen w-full bg-black flex flex-col ${currentView === 'home' ? 'flex' : 'hidden'}`}
+        className={`relative z-[50] min-h-screen w-full bg-black flex-col ${currentView === 'home' ? 'flex' : 'hidden'}`}
       >
 
 
         {/* NEW LEFT SIDEBAR FOR HOME */}
-        <div className="absolute top-0 left-0 w-[80px] h-full bg-[#080d0b]/85 backdrop-blur-md border-r border-[#12241d]/50 hidden lg:flex flex-col justify-between items-center py-8 z-[100] pointer-events-auto">
-          <div className="w-8 h-8 flex flex-col justify-center items-end gap-[5px] cursor-pointer hover:opacity-70 transition-opacity mt-2">
-            <div className="w-full h-[2px] bg-[#61dca3]"></div>
-            <div className="w-[60%] h-[2px] bg-[#61dca3]"></div>
-            <div className="w-full h-[2px] bg-[#61dca3]"></div>
-          </div>
-          <div className="flex flex-col gap-14 text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-white/50 pb-8">
-            <span className="-rotate-90 cursor-pointer hover:text-[#61dca3] transition-all duration-300 flex items-center justify-center w-4 h-4">Tw</span>
-            <span className="-rotate-90 cursor-pointer hover:text-[#61dca3] transition-all duration-300 flex items-center justify-center w-4 h-4">In</span>
-            <span className="-rotate-90 cursor-pointer hover:text-[#61dca3] transition-all duration-300 flex items-center justify-center w-4 h-4">Fb</span>
-          </div>
-        </div>
+        {currentView === 'home' && (
+          <SidebarMargin onOpen={() => setIsSidebarOpen(true)} />
+        )}
 
         {/* Background Glitch */}
         <div className="absolute inset-0 z-0 opacity-30">
@@ -313,6 +306,54 @@ export default function LandingPage() {
         {/* Footer */}
         <Footer />
       </PortfolioSections>
+
+      {/* Sidebar Overlay */}
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '-100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '-100%' }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+            className="fixed inset-0 z-[500] bg-[#080d0b]/95 backdrop-blur-xl flex flex-col"
+          >
+            {/* Overlay Header */}
+            <div className="flex justify-between items-center px-10 py-8 border-b border-[#12241d]/30">
+               <div className="text-[#61dca3] font-bold text-xl tracking-wider">tanish.dev</div>
+               <button 
+                  onClick={() => setIsSidebarOpen(false)} 
+                  className="flex items-center gap-2 text-white/70 hover:text-[#61dca3] text-xs font-semibold tracking-[0.2em] uppercase transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>Close</span>
+               </button>
+            </div>
+            
+            {/* Overlay Navigation List */}
+            <div className="flex-1 flex flex-col justify-center items-start px-12 md:px-24 gap-4">
+               {['Home', 'About', 'Awards', 'Blogs', 'Project', 'Contacts'].map((item, index) => (
+                  <motion.a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={(e) => {
+                       e.preventDefault();
+                       setIsSidebarOpen(false);
+                       handleNavClick(item);
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0, transition: { delay: 0.1 + index * 0.05, ease: "easeOut" } }}
+                    whileHover={{ x: 15, color: '#61dca3' }}
+                    className="text-4xl md:text-6xl font-extrabold tracking-tight transition-colors duration-300 text-white/90 hover:opacity-100"
+                  >
+                    {item}
+                  </motion.a>
+               ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
     </ReactLenis>
   );
