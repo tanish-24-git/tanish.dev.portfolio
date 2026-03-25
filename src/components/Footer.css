@@ -69,38 +69,49 @@
 }
 
 .primary-contact-box {
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 30px 40px;
-  border-radius: 12px;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-width: 300px;
-  transition: transform 0.3s ease;
+  gap: 12px;
+  min-width: 0;
+  transition: none;
 }
 
 .primary-contact-box:hover {
-  transform: translateY(-5px);
+  transform: none;
 }
 
 .contact-label {
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.671);
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
 }
 
 .contact-email {
-  font-size: clamp(1rem, 2vw, 1.4rem);
+  display: inline-block;
+  width: fit-content;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
   color: #ffffff;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  backdrop-filter: blur(10px);
 }
 
 .contact-email:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
   color: #61dca3;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .footer-social-row {

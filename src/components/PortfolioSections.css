@@ -120,6 +120,56 @@
   font-weight: 400;
 }
 
+/* ── Resume Link ── */
+.resume-section {
+  margin-top: 3rem;
+}
+
+.resume-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.resume-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #61dca3;
+  font-family: 'Outfit', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.resume-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #61dca3;
+  transition: width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  border-radius: 4px;
+}
+
+.resume-link:hover::after {
+  width: 100%;
+}
+
+.resume-arrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.resume-link:hover .resume-arrow {
+  transform: translate(4px, -4px);
+}
+
 /* ══════════════════════════════
    MOBILE
 ══════════════════════════════ */
