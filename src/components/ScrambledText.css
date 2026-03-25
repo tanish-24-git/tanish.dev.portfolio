@@ -57,47 +57,4 @@
   }
 }
 
-/* Resume section styles */
-.resume-section {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.resume-heading {
-  font-size: 2.2rem;
-  font-weight: 500;
-  color: #ffffff;
-  margin-bottom: 2rem;
-  letter-spacing: -0.02em;
-}
-
-.resume-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-}
-
-.resume-link:hover {
-  color: #61dca3;
-  border-bottom-color: #61dca3;
-}
-
-.resume-arrow {
-  font-size: 1.1rem;
-  opacity: 0.8;
-  transition: transform 0.3s ease;
-}
-
-.resume-link:hover .resume-arrow {
-  transform: translate(3px, -3px);
-  opacity: 1;
-}
 
