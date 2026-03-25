@@ -9,8 +9,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-right: 1px solid rgba(18, 36, 29, 0.5);
-  background-color: rgba(8, 13, 11, 0.85);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   pointer-events: none;
@@ -80,7 +80,7 @@
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
   pointer-events: auto;
 }
 
@@ -93,5 +93,5 @@
 }
 
 .sidebar-socials span:hover {
-  color: #61dca3;
+  color: #ffffff;
 }

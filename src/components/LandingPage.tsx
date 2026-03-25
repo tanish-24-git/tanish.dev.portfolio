@@ -15,7 +15,7 @@ export default function LandingPage() {
   const lenisRef = useRef<any>(null);
 
   const sectionThemes: Record<string, { bg: string; accent: string }> = {
-    home:     { bg: 'rgba(8, 13, 11, 0.95)',  accent: '#61dca3' }, // Original green
+    home:     { bg: 'rgba(0, 0, 0, 0.95)',  accent: '#61dca3' }, // Sleek black theme
     about:    { bg: 'rgba(0, 0, 0, 0.95)',   accent: '#ffffff' }, // White/monochrome theme
     awards:   { bg: 'rgba(17, 17, 17, 0.95)', accent: '#9ca3af' }, // Grey
     blogs:    { bg: 'rgba(26, 26, 26, 0.95)', accent: '#9ca3af' }, // Grey
@@ -223,7 +223,7 @@ export default function LandingPage() {
               style={{ backgroundColor: currentTheme.bg }}
               className="fixed inset-0 z-[500] backdrop-blur-xl flex flex-col"
             >
-              <div className={`flex justify-between items-center px-10 py-8 border-b ${currentView === 'home' ? 'border-[#12241d]/30' : 'border-white/10'}`}>
+              <div className={`flex justify-between items-center px-10 py-8 border-b border-white/10`}>
                 <div className="font-bold text-xl tracking-wider" style={{ color: currentTheme.accent }}>tanish.dev</div>
                 <button 
                   onClick={() => setIsSidebarOpen(false)} 

@@ -10,7 +10,7 @@ import NotFound404 from './NotFound404';
 const NOT_FOUND_SECTIONS = ['awards', 'blogs', 'project'];
 
 const sections = [
-  { id: 'home',     title: 'Home',     bgColor: '#080d0b' }, // Custom green-black for home
+  { id: 'home',     title: 'Home',     bgColor: '#000000' }, // Sleek black for home
   { id: 'about',    title: 'About',    bgColor: '#000000', content: '' },
   { id: 'awards',   title: 'Awards',   bgColor: '#111111', content: '' },
   { id: 'blogs',    title: 'Blogs',    bgColor: '#1A1A1A', content: '' },

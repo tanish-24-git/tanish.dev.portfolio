@@ -47,15 +47,15 @@ const SidebarMargin = ({
         <div className="flex flex-col items-start gap-[5px] w-[24px] pointer-events-none">
           <div 
             className="w-[18px] h-[2.5px] rounded-full self-end transition-all duration-300 group-hover:w-[24px]"
-            style={{ backgroundColor: accentColor }}
+            style={{ backgroundColor: '#ffffff' }}
           ></div>
           <div 
             className="w-[24px] h-[2.5px] rounded-full transition-all duration-300"
-            style={{ backgroundColor: accentColor }}
+            style={{ backgroundColor: '#ffffff' }}
           ></div>
           <div 
             className="w-[12px] h-[2.5px] rounded-full transition-all duration-300 group-hover:w-[18px]"
-            style={{ backgroundColor: accentColor }}
+            style={{ backgroundColor: '#ffffff' }}
           ></div>
         </div>
       </div>
@@ -63,7 +63,7 @@ const SidebarMargin = ({
       {/* Center Label */}
       <div 
         className="sidebar-section-label" 
-        style={{ color: accentColor }}
+        style={{ color: '#ffffff' }}
       >
         {activeSection}
       </div>
