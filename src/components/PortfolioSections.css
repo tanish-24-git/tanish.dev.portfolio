@@ -12,12 +12,16 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
+  position: relative;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
   z-index: 10;
+}
+
+/* Only the last section stays fixed so the footer can cover it (card stack effect) */
+.portfolio-section:last-of-type {
+  position: sticky;
+  top: 0;
 }
 
 /* ══════════════════════════════
@@ -186,7 +190,10 @@
   }
 
   .section-content {
-    padding: 40px 6% 40px 24px;
+    padding: 80px 6% 40px 24px;
+    justify-content: flex-start;
+    height: auto;
+    min-height: calc(100vh - 80px); /* Adjust for top bar roughly */
   }
 
   .section-header {
