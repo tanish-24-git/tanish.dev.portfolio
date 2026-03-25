@@ -12,6 +12,7 @@ export default function LandingPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState('home');
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const lenisRef = useRef<any>(null);
 
   const sectionThemes: Record<string, { bg: string; accent: string }> = {
@@ -31,7 +32,7 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ['hero', 'about', 'awards', 'blogs', 'project', 'contacts'];
+    const sectionIds = ['hero', 'about', 'awards', 'blogs', 'project'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -101,7 +102,11 @@ export default function LandingPage() {
 
   const handleNavClick = (label: string) => {
     const viewName = label.toLowerCase();
-    if (viewName === 'about' || viewName === 'contacts') {
+    if (viewName === 'contact' || viewName === 'contacts') {
+      setIsContactOpen(true);
+      return;
+    }
+    if (viewName === 'about') {
       setCurrentView('home');
       setTimeout(() => {
         const el = document.getElementById(viewName);
@@ -184,7 +189,12 @@ export default function LandingPage() {
                 </div>
                 <h2 className="text-3xl lg:text-[2.5rem] font-semibold leading-[1.1] text-white tracking-tight mt-1">Building AI that<br/>actually does things</h2>
                 <p className="text-[0.8rem] text-white/60 leading-[1.7] mt-1 font-light pr-2">Stacking attention over layers but I care more about what happens after the forward pass.</p>
-                <button className="bg-white/10 hover:bg-white/20 transition-all duration-300 border border-transparent hover:border-white/20 px-8 py-3 text-[0.8rem] font-medium w-fit text-white rounded-sm mt-3">Send a Message</button>
+                <button 
+                  onClick={() => setIsContactOpen(true)}
+                  className="bg-white/10 hover:bg-white/20 transition-all duration-300 border border-transparent hover:border-white/20 px-8 py-3 text-[0.8rem] font-medium w-fit text-white rounded-sm mt-3"
+                >
+                  Send a Message
+                </button>
               </div>
             </motion.div>
           </main>
@@ -211,8 +221,9 @@ export default function LandingPage() {
           onGoHome={() => setCurrentView('home')} 
           onOpenSidebar={() => setIsSidebarOpen(true)}
           accentColor={currentTheme.accent}
+          onNavClick={handleNavClick}
         >
-          <Footer />
+          <Footer onNavClick={handleNavClick} />
         </PortfolioSections>
 
         <AnimatePresence>
@@ -226,7 +237,7 @@ export default function LandingPage() {
               <div className={`flex justify-between items-center px-10 py-8 border-b border-white/10`}>
                 <div className="font-bold text-xl tracking-wider" style={{ color: currentTheme.accent }}>tanish.dev</div>
                 <button 
-                  onClick={() => setIsSidebarOpen(false)} 
+                   onClick={() => setIsSidebarOpen(false)} 
                   className="flex items-center gap-2 text-white/70 text-xs font-semibold tracking-[0.2em] uppercase transition-all duration-300"
                   onMouseEnter={(e) => (e.currentTarget.style.color = currentTheme.accent)}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)')}
@@ -237,7 +248,7 @@ export default function LandingPage() {
               </div>
               
               <div className="flex-1 flex flex-col justify-center items-start px-12 md:px-24 gap-4">
-                {['Home', 'About', 'Awards', 'Blogs', 'Project', 'Contacts'].map((item, index) => (
+                {['Home', 'About', 'Awards', 'Blogs', 'Project', 'Contact'].map((item, index) => (
                   <motion.a
                     key={item} href={`#${item.toLowerCase()}`}
                     onClick={(e) => { e.preventDefault(); setIsSidebarOpen(false); handleNavClick(item); }}
@@ -249,6 +260,64 @@ export default function LandingPage() {
                   </motion.a>
                 ))}
               </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {isContactOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: '100%' }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: '100%' }}
+              transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.6 }}
+              className="fixed inset-0 z-[600] bg-[#1a1a1a] flex flex-col"
+            >
+              <ReactLenis root={false} options={{ lerp: 0.1, duration: 1.5 }} className="flex flex-col h-full overflow-y-auto">
+                <div className="flex justify-between items-center px-10 py-8 border-b border-white/10 sticky top-0 bg-[#1a1a1a] z-50">
+                  <div className="font-bold text-xl tracking-wider text-white">CONTACT</div>
+                  <button 
+                    onClick={() => setIsContactOpen(false)} 
+                    className="flex items-center gap-2 text-white/70 text-xs font-semibold tracking-[0.2em] uppercase hover:text-white transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                    <span>Close</span>
+                  </button>
+                </div>
+                
+                <section className="portfolio-section z-10">
+                  <div className="flex flex-col items-center px-6 py-24 md:py-48 flex-1">
+                    <div className="w-full max-w-5xl">
+                      <h2 className="text-4xl md:text-8xl font-bold mb-16 tracking-tighter text-white">GET IN TOUCH WITH ME<span className="text-[#61dca3]">.</span></h2>
+                      
+                      <div className="flex flex-col w-full">
+                        {/* LinkedIn */}
+                        <a href="https://www.linkedin.com/in/tanish-jagtap/" target="_blank" rel="noreferrer" className="group relative flex flex-col md:flex-row md:items-center justify-between py-12 px-4 border-b border-white/10 overflow-hidden">
+                          <div className="absolute inset-0 bg-[#61dca3] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-[0.76,0,0.24,1] origin-center"></div>
+                          <span className="relative z-10 text-4xl md:text-7xl font-semibold tracking-tighter text-white group-hover:text-black transition-colors duration-500">LINKEDIN</span>
+                          <span className="relative z-10 text-white/50 text-xl mt-4 md:mt-0 opacity-0 group-hover:opacity-100 group-hover:text-black/70 translate-x-10 group-hover:translate-x-0 transition-all duration-500">Connect with me professionally ↗</span>
+                        </a>
+                        
+                        {/* GitHub */}
+                        <a href="https://github.com/tanish-24-git" target="_blank" rel="noreferrer" className="group relative flex flex-col md:flex-row md:items-center justify-between py-12 px-4 border-b border-white/10 overflow-hidden">
+                          <div className="absolute inset-0 bg-[#61dca3] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-[0.76,0,0.24,1] origin-center"></div>
+                          <span className="relative z-10 text-4xl md:text-7xl font-semibold tracking-tighter text-white group-hover:text-black transition-colors duration-500">GITHUB</span>
+                          <span className="relative z-10 text-white/50 text-xl mt-4 md:mt-0 opacity-0 group-hover:opacity-100 group-hover:text-black/70 translate-x-10 group-hover:translate-x-0 transition-all duration-500">Explore my open-source projects ↗</span>
+                        </a>
+                        
+                        {/* Gmail */}
+                        <a href="mailto:tanishjagtap91@gmail.com" className="group relative flex flex-col md:flex-row md:items-center justify-between py-12 px-4 border-b border-white/10 overflow-hidden">
+                          <div className="absolute inset-0 bg-[#61dca3] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-[0.76,0,0.24,1] origin-center"></div>
+                          <span className="relative z-10 text-4xl md:text-7xl font-semibold tracking-tighter text-white group-hover:text-black transition-colors duration-500">GMAIL</span>
+                          <span className="relative z-10 text-white/50 text-xl mt-4 md:mt-0 opacity-0 group-hover:opacity-100 group-hover:text-black/70 translate-x-10 group-hover:translate-x-0 transition-all duration-500">Reach out to me via email for inquiries ↗</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <Footer 
+                  onNavClick={(label) => { setIsContactOpen(false); handleNavClick(label); }} 
+                />
+              </ReactLenis>
             </motion.div>
           )}
         </AnimatePresence>

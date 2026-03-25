@@ -15,7 +15,6 @@ const sections = [
   { id: 'awards',   title: 'Awards',   bgColor: '#111111', content: '' },
   { id: 'blogs',    title: 'Blogs',    bgColor: '#1A1A1A', content: '' },
   { id: 'project',  title: 'Project',  bgColor: '#222222', content: '' },
-  { id: 'contacts', title: 'Contacts', bgColor: '#2D2D2D', content: '' },
 ];
 
 const PortfolioSections = ({
@@ -23,17 +22,19 @@ const PortfolioSections = ({
   onGoHome,
   onOpenSidebar,
   accentColor = '#61dca3',
+  onNavClick,
   children,
 }: {
   currentView?: string;
   onGoHome?: () => void;
   onOpenSidebar?: () => void;
   accentColor?: string;
+  onNavClick?: (label: string) => void;
   children?: React.ReactNode;
 }) => {
   const visibleSections = sections.filter((section) => {
     if (currentView === 'home') {
-      return section.id === 'about' || section.id === 'contacts';
+      return section.id === 'about';
     }
     return section.id === currentView;
   });
@@ -121,30 +122,6 @@ const PortfolioSections = ({
                           <div id="about-static-image" style={{ opacity: currentView === 'home' ? 0 : 1 }} className="w-[80vw] md:w-[35vw] max-w-[480px] aspect-[3/4] relative rounded-[2rem] shadow-[0_30px_70px_rgba(0,0,0,0.9)] border border-white/10">
                             <img src="/about/base.jpeg" alt="Tanish Jagtap" className="w-full h-full object-cover object-center rounded-[2rem] overflow-hidden" />
                           </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {section.id === 'contacts' && (
-                      <div className="contact-section">
-                        <div className="contact-heading-row">
-                          <h2 className="contact-main-title">
-                            GET IN TOUCH WITH ME<span className="contact-dot">.</span>
-                          </h2>
-                        </div>
-                        <div className="contact-links">
-                          <a href="https://www.linkedin.com/in/tanish-jagtap/" target="_blank" rel="noreferrer" className="contact-link-row">
-                            <span className="contact-link-name">LINKEDIN</span>
-                            <span className="contact-link-desc">Connect with me professionally ↗</span>
-                          </a>
-                          <a href="https://github.com/tanish-24-git" target="_blank" rel="noreferrer" className="contact-link-row">
-                            <span className="contact-link-name">GITHUB</span>
-                            <span className="contact-link-desc">Explore my open-source projects ↗</span>
-                          </a>
-                          <a href="mailto:tanishjagtap24@gmail.com" className="contact-link-row">
-                            <span className="contact-link-name">GMAIL</span>
-                            <span className="contact-link-desc">Reach out to me via email for inquiries ↗</span>
-                          </a>
                         </div>
                       </div>
                     )}

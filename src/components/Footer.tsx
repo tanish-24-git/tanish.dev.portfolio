@@ -1,9 +1,9 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ onNavClick, className = "", style }: { onNavClick?: (label: string) => void; className?: string; style?: React.CSSProperties }) => {
   return (
-    <footer className="portfolio-footer">
+    <footer className={`portfolio-footer ${className}`} style={style}>
       {/* ── Top Section (Dark) ── */}
       <div className="footer-top">
         <div className="footer-top-container">
@@ -71,12 +71,12 @@ const Footer = () => {
           </div>
 
           <div className="quick-links-grid">
-            <a href="#hero" className="quick-link">Home</a>
-            <a href="#blogs" className="quick-link">Blogs</a>
-            <a href="#about" className="quick-link">About</a>
-            <a href="#project" className="quick-link">Projects</a>
-            <a href="#awards" className="quick-link">Awards</a>
-            <a href="#contacts" className="quick-link">Contact</a>
+            <button onClick={() => onNavClick?.('Home')} className="quick-link border-none bg-transparent cursor-pointer text-left p-0">Home</button>
+            <button onClick={() => onNavClick?.('Blogs')} className="quick-link border-none bg-transparent cursor-pointer text-left p-0">Blogs</button>
+            <button onClick={() => onNavClick?.('About')} className="quick-link border-none bg-transparent cursor-pointer text-left p-0">About</button>
+            <button onClick={() => onNavClick?.('Project')} className="quick-link border-none bg-transparent cursor-pointer text-left p-0">Projects</button>
+            <button onClick={() => onNavClick?.('Awards')} className="quick-link border-none bg-transparent cursor-pointer text-left p-0">Awards</button>
+            <button onClick={() => onNavClick?.('Contact')} className="quick-link border-none bg-transparent cursor-pointer text-left p-0">Contact</button>
           </div>
 
           <div className="footer-copyright-divider"></div>
