@@ -3,7 +3,13 @@ import './SidebarMargin.css';
 
 const sections = ['Home', 'About', 'Awards', 'Blogs', 'Project', 'Contacts'];
 
-const SidebarMargin = ({ onOpen }: { onOpen?: () => void }) => {
+const SidebarMargin = ({ 
+  onOpen, 
+  accentColor = '#61dca3' 
+}: { 
+  onOpen?: () => void,
+  accentColor?: string 
+}) => {
   const [activeSection, setActiveSection] = useState('Home');
 
   useEffect(() => {
@@ -39,14 +45,28 @@ const SidebarMargin = ({ onOpen }: { onOpen?: () => void }) => {
       {/* Top Hamburger */}
       <div className="cursor-pointer group flex items-center justify-center pt-8 pointer-events-auto" onClick={onOpen}>
         <div className="flex flex-col items-start gap-[5px] w-[24px] pointer-events-none">
-          <div className="w-[18px] h-[2.5px] bg-[#61dca3] rounded-full self-end transition-all duration-300 group-hover:w-[24px]"></div>
-          <div className="w-[24px] h-[2.5px] bg-[#61dca3] rounded-full transition-all duration-300 group-hover:bg-[#61dca3]/80"></div>
-          <div className="w-[12px] h-[2.5px] bg-[#61dca3] rounded-full transition-all duration-300 group-hover:w-[18px]"></div>
+          <div 
+            className="w-[18px] h-[2.5px] rounded-full self-end transition-all duration-300 group-hover:w-[24px]"
+            style={{ backgroundColor: accentColor }}
+          ></div>
+          <div 
+            className="w-[24px] h-[2.5px] rounded-full transition-all duration-300"
+            style={{ backgroundColor: accentColor }}
+          ></div>
+          <div 
+            className="w-[12px] h-[2.5px] rounded-full transition-all duration-300 group-hover:w-[18px]"
+            style={{ backgroundColor: accentColor }}
+          ></div>
         </div>
       </div>
 
       {/* Center Label */}
-      <div className="sidebar-section-label">{activeSection}</div>
+      <div 
+        className="sidebar-section-label" 
+        style={{ color: accentColor }}
+      >
+        {activeSection}
+      </div>
 
       {/* Bottom Socials */}
       <div className="sidebar-socials">

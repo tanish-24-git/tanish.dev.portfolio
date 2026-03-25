@@ -175,9 +175,6 @@
 }
 
 .contact-dot {
-  color: #eb5939; /* Keep the original dot color from the image reference if user explicitly wants it to look like that, but wait, user said "match the theme of of the my contact page and apply hover color according to that". Their theme is dark with green `#61dca3`. So I'll use `#61dca3` */
-}
-.contact-dot {
   color: #61dca3;
 }
 
