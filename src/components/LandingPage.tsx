@@ -218,13 +218,13 @@ export default function LandingPage() {
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
                     </svg>
-                    <span>Explore 3D Art Creations</span>
+                    <span>AI Engineer</span>
                   </div>
                   <h2 className="text-3xl lg:text-[2.5rem] font-semibold leading-[1.1] text-white tracking-tight mt-1">
-                    Shape the Future<br/>with Artoo
+                    Building AI that<br/>actually does things
                   </h2>
                   <p className="text-[0.8rem] text-white/60 leading-[1.7] mt-1 font-light pr-2">
-                    Dive into a collection of stunning 3D models and designs crafted with Artoo software, tailored for the modern digital artist.
+                    Stacking attention over layers but I care more about what happens after the forward pass.
                   </p>
                   <button className="bg-white/10 hover:bg-white/20 transition-all duration-300 border border-transparent hover:border-white/20 px-8 py-3 text-[0.8rem] font-medium w-fit text-white rounded-sm mt-3">
                     Send a Message
