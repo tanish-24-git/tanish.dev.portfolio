@@ -10,6 +10,7 @@ import NotFound404 from './NotFound404';
 const NOT_FOUND_SECTIONS = ['awards', 'blogs', 'project'];
 
 const sections = [
+  { id: 'home',     title: 'Home',     bgColor: '#080d0b' }, // Custom green-black for home
   { id: 'about',    title: 'About',    bgColor: '#000000', content: '' },
   { id: 'awards',   title: 'Awards',   bgColor: '#111111', content: '' },
   { id: 'blogs',    title: 'Blogs',    bgColor: '#1A1A1A', content: '' },
@@ -58,11 +59,11 @@ const PortfolioSections = ({
               <>
                 {/* Top bar */}
                 <div className="section-top-bar">
-                  <div className="top-bar-corner cursor-pointer group flex items-center justify-center" onClick={onOpenSidebar}>
-                    <div className="relative w-9 h-9 md:w-12 md:h-12 rounded-full border border-white/10 flex flex-col items-end justify-center gap-[4px] md:gap-[5px] transition-all duration-500 group-hover:border-[#61dca3]/50 group-hover:bg-[#61dca3]/5 hover:shadow-[0_0_20px_rgba(97,220,163,0.15)] pr-[10px] md:pr-[14px]">
-                      <div className="w-[16px] md:w-[20px] h-[1.5px] md:h-[2px] bg-[#61dca3] rounded-full transition-all duration-400 group-hover:w-[22px] md:group-hover:w-[26px]"></div>
-                      <div className="w-[10px] md:w-[12px] h-[1.5px] md:h-[2px] bg-[#61dca3] rounded-full transition-all duration-400 group-hover:w-[22px] md:group-hover:w-[26px]"></div>
-                      <div className="w-[16px] md:w-[20px] h-[1.5px] md:h-[2px] bg-[#61dca3] rounded-full transition-all duration-400 group-hover:w-[12px] md:group-hover:w-[14px]"></div>
+                  <div className="top-bar-corner cursor-pointer group flex items-center justify-center p-0" onClick={onOpenSidebar}>
+                    <div className="flex flex-col items-start gap-[5px] w-[24px] pointer-events-none">
+                      <div className="w-[18px] h-[2.5px] bg-[#61dca3] rounded-full self-end transition-all duration-300 group-hover:w-[24px]"></div>
+                      <div className="w-[24px] h-[2.5px] bg-[#61dca3] rounded-full transition-all duration-300 group-hover:bg-[#61dca3]/80"></div>
+                      <div className="w-[12px] h-[2.5px] bg-[#61dca3] rounded-full transition-all duration-300 group-hover:w-[18px]"></div>
                     </div>
                   </div>
                   <div className="top-bar-title">

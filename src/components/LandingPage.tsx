@@ -13,6 +13,15 @@ export default function LandingPage() {
   const [isMobile, setIsMobile] = useState(false);
   const lenisRef = useRef<any>(null);
 
+  const sectionColors: Record<string, string> = {
+    home: 'rgba(8, 13, 11, 0.95)',
+    about: 'rgba(0, 0, 0, 0.95)',
+    awards: 'rgba(17, 17, 17, 0.95)',
+    blogs: 'rgba(26, 26, 26, 0.95)',
+    project: 'rgba(34, 34, 34, 0.95)',
+    contacts: 'rgba(45, 45, 45, 0.95)',
+  };
+
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -347,10 +356,11 @@ export default function LandingPage() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '-100%' }}
             transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
-            className="fixed inset-0 z-[500] bg-[#080d0b]/95 backdrop-blur-xl flex flex-col"
+            style={{ backgroundColor: sectionColors[currentView] || sectionColors.home }}
+            className="fixed inset-0 z-[500] backdrop-blur-xl flex flex-col"
           >
             {/* Overlay Header */}
-            <div className="flex justify-between items-center px-10 py-8 border-b border-[#12241d]/30">
+            <div className={`flex justify-between items-center px-10 py-8 border-b ${currentView === 'home' ? 'border-[#12241d]/30' : 'border-white/10'}`}>
                <div className="text-[#61dca3] font-bold text-xl tracking-wider">tanish.dev</div>
                <button 
                   onClick={() => setIsSidebarOpen(false)} 
